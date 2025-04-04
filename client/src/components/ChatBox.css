@@ -1,0 +1,33 @@
+.chatbox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .messages {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .user {
+    text-align: right;
+    color: blue;
+  }
+  
+  .ai {
+    text-align: left;
+    color: green;
+  }
+  
+  input {
+    width: 100%;
+    border: none;
+    padding: 10px;
+  }
+  
