@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/mywebsite");
+mongoose.connect("mongodb+srv://ntruong2028:<db_password>@cluster0.lxp5sik.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 
 const Store = mongoose.model("Store", new mongoose.Schema({
   name: String,
