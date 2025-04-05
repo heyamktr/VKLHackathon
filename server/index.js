@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -6,10 +7,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/mywebsite", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("✅ Connected to MongoDB"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 const storeSchema = new mongoose.Schema({
   name: String,
@@ -20,7 +20,6 @@ const storeSchema = new mongoose.Schema({
 
 const Store = mongoose.model("Store", storeSchema);
 
-// Example route
 app.post("/api/recommend", async (req, res) => {
   const { cuisine, price, distance } = req.body;
   const results = await Store.find({
@@ -31,4 +30,4 @@ app.post("/api/recommend", async (req, res) => {
   res.json(results);
 });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.listen(5000, () => console.log("🚀 Server running on port 5000"));
